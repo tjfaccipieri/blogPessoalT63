@@ -5,3 +5,8 @@
 .alinhamento {
   display: flex;
 }
+
+.outlinedButton {
+  border-color: #fff !important;
+  color: #fff !important;
+}
