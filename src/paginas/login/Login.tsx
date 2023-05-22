@@ -55,7 +55,7 @@ function Login() {
       <Grid container alignItems={'center'}>
         <Grid item xs={6}>
           <Box display={'flex'} justifyContent={'center'}>
-            <Grid xs={6} gap={2} display={'flex'} flexDirection={'column'}>
+            <Grid item xs={6} gap={2} display={'flex'} flexDirection={'column'}>
               <form onSubmit={enviar}>
                 <Box display={'flex'} flexDirection={'column'} gap={2}>
                   <Typography align="center" variant="h3">
