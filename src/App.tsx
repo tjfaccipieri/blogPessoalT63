@@ -7,6 +7,7 @@ import Login from './paginas/login/Login'
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario'
 import ListaPostagens from './componentes/postagens/listaPostagens/ListaPostagens'
 import ListaTemas from './componentes/temas/listaTemas/ListaTemas'
+import CadastrarTema from './componentes/temas/cadastrarTema/CadastrarTema'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
             <Route path='/cadastro' element={<CadastroUsuario />} />
             <Route path='/postagens' element={<ListaPostagens />} />
             <Route path='/temas' element={<ListaTemas />} />
+            <Route path='/cadastrarTema' element={<CadastrarTema />} />
           </Routes>
         </div>
         <Footer />

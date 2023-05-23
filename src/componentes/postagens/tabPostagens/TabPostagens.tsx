@@ -17,7 +17,7 @@ function TabPostagens() {
     <div >
       <TabContext value={value}>
         <AppBar position="static">
-          <TabList onChange={handleChange} aria-label="simple tabs example">
+          <TabList onChange={handleChange} aria-label="simple tabs example" style={{margin: '0 auto'}}>
             <Tab label="Postagens" value="1" />
             <Tab label="Sobre" value="2" />
           </TabList>
