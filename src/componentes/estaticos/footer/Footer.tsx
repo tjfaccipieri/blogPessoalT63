@@ -12,7 +12,7 @@ function Footer() {
     <footer className='footer'>
       <Grid container py={4} alignItems={'center'}>
         <Grid item xs={4} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
-          <Typography variant='h6'>Blog da turma 63 - Feito por: Thiago Faccipieri - 2023</Typography>
+          <Typography variant='h6' align='center'>Blog da turma 63 - Feito por: Thiago Faccipieri - 2023</Typography>
           <Box display={'flex'}>
             <Typography>Feito com:</Typography>
             <KeyboardArrowLeftIcon />

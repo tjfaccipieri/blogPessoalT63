@@ -8,6 +8,7 @@ import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario'
 import ListaPostagens from './componentes/postagens/listaPostagens/ListaPostagens'
 import ListaTemas from './componentes/temas/listaTemas/ListaTemas'
 import CadastrarTema from './componentes/temas/cadastrarTema/CadastrarTema'
+import DeletarTema from './componentes/temas/deletarTema/DeletarTema'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path='/postagens' element={<ListaPostagens />} />
             <Route path='/temas' element={<ListaTemas />} />
             <Route path='/cadastrarTema' element={<CadastrarTema />} />
+            <Route path='/deletarTema/:id' element={<DeletarTema />} />
           </Routes>
         </div>
         <Footer />
