@@ -9,6 +9,8 @@ import ListaPostagens from './componentes/postagens/listaPostagens/ListaPostagen
 import ListaTemas from './componentes/temas/listaTemas/ListaTemas'
 import CadastrarTema from './componentes/temas/cadastrarTema/CadastrarTema'
 import DeletarTema from './componentes/temas/deletarTema/DeletarTema'
+import FormularioPostagem from './componentes/postagens/formularioPostagem/FormularioPostagem'
+import DeletarPostagem from './componentes/postagens/deletarPostagem/DeletarPostagem'
 
 function App() {
 
@@ -23,9 +25,13 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/cadastro' element={<CadastroUsuario />} />
             <Route path='/postagens' element={<ListaPostagens />} />
+            <Route path='/formularioPostagem' element={<FormularioPostagem />} />
+            <Route path='/formularioPostagem/:id' element={<FormularioPostagem />} />
+            <Route path='/apagarPostagem/:id' element={<DeletarPostagem />} />
             <Route path='/temas' element={<ListaTemas />} />
-            <Route path='/cadastrarTema' element={<CadastrarTema />} />
-            <Route path='/deletarTema/:id' element={<DeletarTema />} />
+            <Route path='/formularioTema' element={<CadastrarTema />} />
+            <Route path='/formularioTema/:id' element={<CadastrarTema />} />
+            <Route path='/apagarTema/:id' element={<DeletarTema />} />
           </Routes>
         </div>
         <Footer />

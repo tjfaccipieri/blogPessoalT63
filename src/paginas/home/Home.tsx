@@ -3,6 +3,7 @@ import './Home.css';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import ListaPostagens from '../../componentes/postagens/listaPostagens/ListaPostagens';
 import TabPostagens from '../../componentes/postagens/tabPostagens/TabPostagens';
+import ModalPostagem from '../../componentes/postagens/modalPostagem/ModalPostagem';
 function Home() {
   return (
     <>
@@ -11,7 +12,10 @@ function Home() {
         <Box p={8} color={'white'} display={'flex'} flexDirection={'column'} alignItems={'center'} gap={2}>
           <Typography align='center' fontWeight={900} variant='h3'>Bem vindo ao blog pessoal</Typography>
           <Typography align='center' variant='body1'>Digita uns textos dahora pra nóis ai...</Typography>
-          <Button variant='outlined' className='outlinedButton'>Ver Postagens</Button>
+          <Box display={'flex'} justifyContent={'center'} gap={4}>
+            <ModalPostagem />
+            <Button variant='outlined' className='outlinedButton'>Ver Postagens</Button>
+          </Box>
         </Box>
       </Grid>
       <Grid item xs={4}>

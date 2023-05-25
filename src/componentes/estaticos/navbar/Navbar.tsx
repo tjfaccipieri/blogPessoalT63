@@ -17,9 +17,9 @@ function Navbar() {
     <>
       <AppBar position="static" className="navbar">
         <Toolbar variant="dense">
-          <Grid container justifyContent={'space-between'}>
+          <Grid container justifyContent={'space-between'} className='fonte'>
             <Box style={{ cursor: 'pointer' }}>
-              <Typography variant="h5" color="inherit">
+              <Typography variant="h5" color="inherit" className='fonte'>
                 BlogPessoal
               </Typography>
             </Box>
@@ -46,7 +46,7 @@ function Navbar() {
                   </Typography>
                 </Box>
               </Link>
-              <Link to="/cadastrarTema">
+              <Link to="/formularioTema">
                 <Box mx={1} style={{ cursor: 'pointer' }}>
                   <Typography variant="h6" color="inherit">
                     cadastrar tema
