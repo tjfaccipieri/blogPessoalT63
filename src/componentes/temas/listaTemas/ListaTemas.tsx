@@ -2,13 +2,19 @@ import { Box, Card, CardContent, Typography, CardActions, Button } from '@mui/ma
 import React, { useState,useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { Tema } from '../../../model/Tema';
-import useLocalStorage from 'react-use-localstorage';
 import { busca } from '../../../service/service';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToken } from '../../../store/tokens/action';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function ListaTemas() {
   const [temas, setTemas] = useState<Tema[]>([])
   const navigate = useNavigate();
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
+  const dispatch = useDispatch()
   
   async function getTemas() {
     // alterado a função pra dentro de um try catch, para poder verificar a validade do token do usuário
@@ -25,7 +31,7 @@ function ListaTemas() {
       if(error.toString().includes('403')) {
         console.log(error);
         alert('O seu token expirou, logue novamente')
-        setToken('')
+        dispatch(addToken(''))
         navigate('/login')
       }
     }

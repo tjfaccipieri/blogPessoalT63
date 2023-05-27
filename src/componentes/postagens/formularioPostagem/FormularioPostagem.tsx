@@ -13,14 +13,24 @@ import {
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Postagem } from '../../../model/Postagem';
 import { useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { Tema } from '../../../model/Tema';
 import { busca, buscaId, post, put } from '../../../service/service';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { addToken } from '../../../store/tokens/action';
+import { Usuario } from '../../../model/Usuario';
+import { useDispatch, useSelector } from 'react-redux';
 
 function FormularioPostagem() {
   const navigate = useNavigate();
 
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+  const userId = useSelector<TokenState, TokenState["id"]>(
+    (state) => state.id
+  );
+
+  const dispatch = useDispatch()
 
   const { id } = useParams<{ id: string }>();
 
@@ -29,6 +39,7 @@ function FormularioPostagem() {
   const [tema, setTema] = useState<Tema>({
     id: 0,
     descricao: '',
+    postagem: null
   });
 
   const [postagem, setPostagem] = useState<Postagem>({
@@ -37,7 +48,17 @@ function FormularioPostagem() {
     texto: '',
     data: '',
     tema: null,
+    usuario: null
   });
+
+  const [usuario, setUsuario] = useState<Usuario>({
+    id: +userId,
+    foto: '',
+    nome: '',
+    usuario: '',
+    senha: '',
+    postagem: null
+  })
 
   useEffect(() => {
     if(token === ''){ 
@@ -56,7 +77,7 @@ function FormularioPostagem() {
     } catch (error: any) {
       if (error.toString().contains('403')) {
         alert('Token expirado, logue novamente');
-        setToken('');
+        dispatch(addToken(''))
         navigate('/login');
       }
     }
@@ -89,6 +110,7 @@ function FormularioPostagem() {
     setPostagem({
       ...postagem,
       tema: tema,
+      usuario: usuario
     });
   }, [tema]);
 

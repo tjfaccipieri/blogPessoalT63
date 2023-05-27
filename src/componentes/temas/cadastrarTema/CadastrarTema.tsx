@@ -1,13 +1,16 @@
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
-import useLocalStorage from 'react-use-localstorage';
 import { useState, ChangeEvent, useEffect } from 'react';
 import { Tema } from '../../../model/Tema';
 import { buscaId, post, put } from '../../../service/service';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function CadastrarTema() {
   // pegar o token armazenado
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   const navigate = useNavigate();
 

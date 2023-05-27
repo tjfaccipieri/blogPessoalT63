@@ -4,17 +4,27 @@ import { Grid, Box, Typography, TextField, Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { UsuarioLogin } from '../../model/UsuarioLogin';
 import { login } from '../../service/service';
-import useLocalStorage from 'react-use-localstorage';
+import { useDispatch } from 'react-redux';
+import { addId, addToken } from '../../store/tokens/action';
 
 function Login() {
   // cria a variavel para navegação interna pela rota
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   // cria um estado para armazenamento no localStorage do navegador
-  const [token, setToken] = useLocalStorage('token');
+  const [token, setToken] = useState('');
 
   // cria um estado de controle para o usuário preencher os dados de login
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
+    id: 0,
+    nome: '',
+    usuario: '',
+    senha: '',
+    foto: '',
+    token: '',
+  });
+  const [respUsuarioLogin, setRespUsuarioLogin] = useState<UsuarioLogin>({
     id: 0,
     nome: '',
     usuario: '',
@@ -36,7 +46,7 @@ function Login() {
     // previne que o formulario atualize a pagina
     event.preventDefault();
     try {
-      await login('/usuarios/logar', usuarioLogin, setToken);
+      await login('/usuarios/logar', usuarioLogin, setRespUsuarioLogin);
       alert('Usuario logado com sucesso');
     } catch (error) {
       alert('Usuário e/ou senha inválidos');
@@ -46,9 +56,19 @@ function Login() {
   // Efeito que fica de olho no token, e quando chega algo diferente de vazio, navega o usuario pra home
   useEffect(() => {
     if (token !== '') {
-      navigate('/home');
+      // dispatch(addToken(token))
+      // navigate('/home');
     }
   }, [token]);
+
+  useEffect(() => {
+    if(respUsuarioLogin.token !== ''){
+      dispatch(addToken(respUsuarioLogin.token))
+      dispatch(addId(respUsuarioLogin.id.toString()))
+      navigate('/home');
+      console.log({respUsuarioLogin});
+    }
+  }, [respUsuarioLogin.token])
 
   return (
     <>

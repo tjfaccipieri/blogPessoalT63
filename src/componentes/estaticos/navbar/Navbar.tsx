@@ -1,21 +1,29 @@
 import { AppBar, Toolbar, Box, Typography, Grid } from '@mui/material';
 import './Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { addToken } from '../../../store/tokens/action';
 
 function Navbar() {
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
   function logout() {
     alert('Usuário deslogado com sucesso');
-    setToken('');
+    dispatch(addToken(''))
     navigate('/login');
   }
 
-  return (
-    <>
-      <AppBar position="static" className="navbar">
+  let navbarComponent;
+
+  if(token !== '') {
+    navbarComponent = (
+<AppBar position="static" className="navbar">
         <Toolbar variant="dense">
           <Grid container justifyContent={'space-between'} className='fonte'>
             <Box style={{ cursor: 'pointer' }}>
@@ -62,6 +70,12 @@ function Navbar() {
           </Grid>
         </Toolbar>
       </AppBar>
+    )
+  }
+
+  return (
+    <>
+      {navbarComponent}
     </>
   );
 }

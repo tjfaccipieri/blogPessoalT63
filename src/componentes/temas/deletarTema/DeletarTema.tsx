@@ -1,12 +1,18 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { Tema } from '../../../model/Tema';
 import { buscaId, deleteId } from '../../../service/service';
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { addToken } from '../../../store/tokens/action';
 
 function DeletarTema() {
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
+  const dispatch = useDispatch()
 
   const navigate = useNavigate();
 
@@ -27,7 +33,7 @@ function DeletarTema() {
     } catch (error: any) {
       if(error.toString().contains('403')) {
         alert('Token expirado, logue novamente')
-        setToken('')
+        dispatch(addToken(''))
         navigate('/login')
       } else {
         alert('O tema não existe')
