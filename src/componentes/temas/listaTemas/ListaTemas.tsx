@@ -6,6 +6,7 @@ import { busca } from '../../../service/service';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToken } from '../../../store/tokens/action';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import './ListaTema.css'
 
 function ListaTemas() {
   const [temas, setTemas] = useState<Tema[]>([])
@@ -50,6 +51,13 @@ function ListaTemas() {
   
   return (
     <>
+    {/* criando um if ternário para exibir um loader de carregamento enquanto os temas não chegam do backend */}
+    {/* na primeira linha, temos a condição do if */}
+      {temas.length === 0 
+      // com o sinal de interrogação, fazemos a saida padrão do if, para caso a condição seja verdadeira
+        ? <div className="alinhamento"><span className="loader"></span></div> 
+        // o dois pontos (:) representa o ELSE de um if padrão, e colocamos a saida para caso a condição seja falsa. Nesse caso, exibir nada
+        : <></>}
       {temas.map((tema) => (
         <Box m={2} >
         <Card variant="outlined">

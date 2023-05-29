@@ -61,6 +61,13 @@ function Navbar() {
                   </Typography>
                 </Box>
               </Link>
+              <Link to="/perfil">
+                <Box mx={1} style={{ cursor: 'pointer' }}>
+                  <Typography variant="h6" color="inherit">
+                    perfil
+                  </Typography>
+                </Box>
+              </Link>
               <Box mx={1} style={{ cursor: 'pointer' }} onClick={logout}>
                 <Typography variant="h6" color="inherit">
                   logout

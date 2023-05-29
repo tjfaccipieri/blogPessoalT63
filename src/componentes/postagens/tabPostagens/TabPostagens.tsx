@@ -5,6 +5,7 @@ import TabContext from '@material-ui/lab/TabContext';
 import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
 import ListaPostagens from '../listaPostagens/ListaPostagens';
+import Carousel from '../../carousel/Carousel';
 
 
 function TabPostagens() {
@@ -24,7 +25,7 @@ function TabPostagens() {
         </AppBar>
         <TabPanel value="1"><ListaPostagens /></TabPanel>
         <TabPanel value="2">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nemo esse quo accusamus voluptatum minus repudiandae cupiditate quisquam illo praesentium deserunt asperiores optio explicabo nulla facilis, facere excepturi debitis atque!
+          <Carousel />
         </TabPanel>
         
       </TabContext>

@@ -6,6 +6,7 @@ import { UsuarioLogin } from '../../model/UsuarioLogin';
 import { login } from '../../service/service';
 import { useDispatch } from 'react-redux';
 import { addId, addToken } from '../../store/tokens/action';
+import { toast } from 'react-toastify';
 
 function Login() {
   // cria a variavel para navegação interna pela rota
@@ -47,9 +48,29 @@ function Login() {
     event.preventDefault();
     try {
       await login('/usuarios/logar', usuarioLogin, setRespUsuarioLogin);
-      alert('Usuario logado com sucesso');
+      // alert('Usuario logado com sucesso');
+      toast.success('Usuário logado com sucesso', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
     } catch (error) {
-      alert('Usuário e/ou senha inválidos');
+      // alert('Usuário e/ou senha inválidos');
+      toast.error('Usuário e/ou senha inválidos', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
     }
   }
 

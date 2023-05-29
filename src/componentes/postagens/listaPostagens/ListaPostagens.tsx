@@ -38,26 +38,29 @@ function ListaPostagens() {
 
   return (
     <>
-      <Grid container my={2} px={4}>
+      <Grid container justifyContent={'center'} my={2} px={2}>
         <Box display='flex' flexWrap={'wrap'} width={'100%'} gap={2}>
           {postagens.map((post) => (
-            <Grid item xs={3} border={1} borderRadius={2} borderColor={'lightgray'} p={2}>
+            <Grid item width={'32%'} border={1} borderRadius={2} borderColor={'lightgray'} p={2}>
             <Typography>Postagem:</Typography>
             <Typography>{post.titulo}</Typography>
             <Typography>{post.texto}</Typography>
             <Avatar src={post.usuario?.foto} style={{border: '1px solid black'}} alt='' />
-            <Typography>{new Intl.DateTimeFormat('pt-br', {
-              dateStyle: 'full'
-            }).format(new Date(post.data))}</Typography>
+            {/* formatação da data para um padrão interessante de exibição, usando a biblioteca Intl, que já existe por padrão em qlquer navegador atual */}
+            <Typography>
+              {new Intl.DateTimeFormat('pt-br', {
+                dateStyle: 'full'
+              }).format(new Date(post.data))}
+            </Typography>
             <Typography>Tema: {post.tema?.descricao}</Typography>
-            <Box display={'flex'} gap={4}>
+            {/* <Box display={'flex'} gap={4}>
               <Link to={`/formularioPostagem/${post.id}`}>
                 <Button fullWidth variant='contained' color='primary'>editar</Button>
               </Link>
               <Link to={`/apagarPostagem/${post.id}`}>
                 <Button fullWidth variant='contained' color='secondary'>apagar</Button>
               </Link>
-            </Box>
+            </Box> */}
           </Grid>
           ))}
         </Box>

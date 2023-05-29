@@ -1,0 +1,26 @@
+/* todo esse css do loader foi pego online, do site https://cssloaders.github.io/ */
+
+.loader {
+  width: 480px;
+  height: 480px;
+  border: 5px solid;
+  border-color: #222ed3 transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+.alinhamento {
+  display: grid;
+  place-items: center;
+}

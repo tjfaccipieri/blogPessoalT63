@@ -13,11 +13,15 @@ import FormularioPostagem from './componentes/postagens/formularioPostagem/Formu
 import DeletarPostagem from './componentes/postagens/deletarPostagem/DeletarPostagem'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import Perfil from './paginas/perfil/Perfil'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
   return (
     <Provider store={store}>
+      <ToastContainer />
       <BrowserRouter>
         <Navbar />
         <div style={{minHeight: '85vh'}}>
@@ -34,6 +38,7 @@ function App() {
             <Route path='/formularioTema' element={<CadastrarTema />} />
             <Route path='/formularioTema/:id' element={<CadastrarTema />} />
             <Route path='/apagarTema/:id' element={<DeletarTema />} />
+            <Route path='/perfil' element={<Perfil />} />
           </Routes>
         </div>
         <Footer />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { Postagem } from '../../../model/Postagem';
-import { buscaId } from '../../../service/service';
+import { buscaId, deleteId } from '../../../service/service';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
@@ -44,6 +44,20 @@ function DeletarPostagem() {
     }
   }, []);
 
+  function back(){
+    navigate('/postagens')
+  }
+
+  function apagarPostagem() {
+    deleteId(`/postagens/${id}`, {
+      headers: {
+        Authorization: token
+      }
+    })
+    alert('postagem apagada com sucesso')
+    back()
+  }
+
   return (
     <>
       <Grid container justifyContent={'center'} my={2}>
@@ -62,16 +76,13 @@ function DeletarPostagem() {
             <Typography>Postagem:</Typography>
             <Typography>{post.titulo}</Typography>
             <Typography>{post.texto}</Typography>
-            {/* <Typography>{new Intl.DateTimeFormat('pt-br', {
-              dateStyle: 'full'
-            }).format(new Date(post.data))}</Typography> */}
             <Typography>Tema: {post.tema?.descricao}</Typography>
 
             <Box display={'flex'} gap={4}>
-              <Button fullWidth variant="contained" color="primary">
+              <Button fullWidth variant="contained" color="primary" onClick={back}>
                 cancelar
               </Button>
-              <Button fullWidth variant="contained" color="secondary">
+              <Button fullWidth variant="contained" color="secondary" onClick={apagarPostagem}>
                 apagar
               </Button>
             </Box>
