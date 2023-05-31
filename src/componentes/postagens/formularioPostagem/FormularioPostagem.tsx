@@ -179,7 +179,7 @@ function FormularioPostagem() {
             <InputLabel id="selectTema">Tema</InputLabel>
             <Select
               labelId="selectTema"
-              onChange={(event) =>
+              onChange={(event) => 
                 buscaId(`/temas/${event.target.value}`, setTema, {
                   headers: {
                     Authorization: token,

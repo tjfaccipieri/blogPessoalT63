@@ -116,6 +116,8 @@ function Login() {
                     name="senha"
                     label="Senha"
                     type="password"
+                    error={usuarioLogin.senha.length < 8 && usuarioLogin.senha.length > 0}
+                    helperText={usuarioLogin.senha.length < 8 && usuarioLogin.senha.length > 0 ? 'Tem que ter mais de 8 caracteres' : ''}
                     value={usuarioLogin.senha}
                     onChange={(event: ChangeEvent<HTMLInputElement>) =>
                       updateModel(event)

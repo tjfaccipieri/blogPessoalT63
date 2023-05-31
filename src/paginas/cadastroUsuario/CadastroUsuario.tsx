@@ -98,6 +98,8 @@ function CadastroUsuario() {
                   <TextField
                     name="usuario"
                     label="Endereço de e-mail"
+                    type='email'
+                    required
                     value={usuario.usuario}
                     onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
                   />
