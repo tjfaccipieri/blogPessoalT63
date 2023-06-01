@@ -95,14 +95,14 @@ function Navbar() {
             <Box display="flex" justifyContent="start">
               <Link to="/home">
                 <Box mx={1} style={{ cursor: 'pointer' }}>
-                  <Typography variant="h6" color="inherit">
+                  <Typography variant="h6" color="inherit" className='cursor'>
                     home
                   </Typography>
                 </Box>
               </Link>
               <Link to="/postagens">
                 <Box mx={1} style={{ cursor: 'pointer' }}>
-                  <Typography variant="h6" color="inherit">
+                  <Typography variant="h6" color="inherit" className='cursor'>
                     postagens
                   </Typography>
                 </Box>
