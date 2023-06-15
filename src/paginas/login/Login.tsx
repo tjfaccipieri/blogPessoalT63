@@ -100,7 +100,7 @@ function Login() {
               <form onSubmit={enviar}>
                 <Box display={'flex'} flexDirection={'column'} gap={2}>
                   <Typography align="center" variant="h3">
-                    Logar nessa maravilha de blog
+                    Logar
                   </Typography>
 
                   <TextField
