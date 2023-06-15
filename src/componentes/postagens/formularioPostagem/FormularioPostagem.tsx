@@ -19,6 +19,7 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
 import { addToken } from '../../../store/tokens/action';
 import { Usuario } from '../../../model/Usuario';
 import { useDispatch, useSelector } from 'react-redux';
+import './FormularioPostagem.css'
 
 function FormularioPostagem() {
   const navigate = useNavigate();
@@ -186,6 +187,7 @@ function FormularioPostagem() {
                   },
                 })
               }
+              className='selectPostagem'
             >
               {temas.map((tema) => (
                 <MenuItem key={tema.id} value={tema.id}>

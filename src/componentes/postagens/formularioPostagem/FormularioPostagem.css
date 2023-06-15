@@ -1,0 +1,12 @@
+.selectPostagem {
+  border: 2px solid red !important;
+  outline: none !important
+}
+
+select:focus {
+  outline: none !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border: none
+}
